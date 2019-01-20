@@ -1,0 +1,16 @@
+import cv2
+import os
+
+IMG_H = 44
+IMG_W = 100
+PATH = './rec/'
+fourcc = cv2.VideoWriter_fourcc('m','p','4','v')
+video = cv2.VideoWriter('video.mp4', fourcc, 20.0, (IMG_H, IMG_W))
+
+files = os.listdir(PATH)
+for file in files:
+    img = cv2.imread(file)
+    img = cv2.resize(img, (IMG_H, IMG_W))
+    video.write(img)
+
+video.release()
